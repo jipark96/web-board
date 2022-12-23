@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 560px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>채용공고 수정</h2>
+  </div>
+  <h4 class="mb-3">채용공고</h4>
+  <form th:action="@{/company/update/{id}(id=${company.id})}" method="post">
+    <div>
+      <label for="id">회사_id</label>
+      <input type="text" id="id" name="id" class="form-control" th:value="${company.id}" readonly>
+    </div>
+    <div>
+      <label for="name">회사명</label>
+      <input type="text" id="name" name="name" class="form-control" th:value="${company.name}">
+    </div>
+    <div>
+      <label for="position">채용포지션</label>
+      <input type="text" id="position" name="position" class="form-control"
+             th:value="${company.position}">
+    </div>
+    <div>
+      <label for="money">채용보상금</label>
+      <input type="text" id="money" name="money" class="form-control" th:value="${company.money}">
+    </div>
+    <div>
+      <label for="content">채용내용</label>
+      <input type="text" id="content" name="content" class="form-control" th:value="${company.content}">
+    </div>
+    <div>
+      <label for="tech">사용기술</label>
+      <input type="text" id="tech" name="tech" class="form-control" th:value="${company.tech}">
+    </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col">
+        <button class="w-100 btn btn-primary btn-lg" type="submit">저장</button>
+      </div>
+      <div class="col">
+        <button class="w-100 btn btn-secondary btn-lg"
+                th:onclick="|location.href='@{/company/view(id=${company.id})}'|"
+                type="button">취소</button>
+      </div>
+    </div>
+  </form>
+</div> <!-- /container -->
+</body>
+</html>

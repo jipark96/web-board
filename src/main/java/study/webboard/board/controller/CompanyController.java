@@ -1,5 +1,9 @@
 package study.webboard.board.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,18 +34,27 @@ public class CompanyController {
     }
     //[목록]
     @GetMapping("/company/list")
-    public String companyList(Model model) {
-        model.addAttribute("list",companyService.companyList());
+    public String companyList(Model model, @PageableDefault Pageable pageable,
+                              String searchKeyword) {
+
+        Page<Company> list=null;
+        if(searchKeyword == null) {
+            list = companyService.companyList(pageable);
+        } else {
+            list = companyService.companySearchList(searchKeyword, pageable);
+        }
+
+        model.addAttribute("list",list);
         return "companylist";
     }
     //[상세 정보]
-    @GetMapping("/company/view") //http://localhost:8080/board/view?id=1
+    @GetMapping("/company/view") //http://localhost:8080/company/view?id=1
     public String companyView(Model model,Integer id) {
         model.addAttribute("company",companyService.companyView(id));
         return "companyview";
     }
     //[삭제]
-    @GetMapping("/company/delete")
+    @GetMapping("/company/delete") //http://localhost:8080/company/delete?id=3
     public String companyDelete(Integer id) {
         companyService.companyDelete(id);
         return "redirect:/company/list";

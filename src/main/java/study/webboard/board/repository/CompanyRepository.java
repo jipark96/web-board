@@ -9,5 +9,5 @@ import study.webboard.board.entity.Company;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
-//    Page<Company> findAllByContaining(String searchKeyword, Pageable pageable);
+    Page<Company> findByPositionContaining(String searchKeyword, Pageable pageable);
 }

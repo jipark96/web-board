@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import study.webboard.board.entity.Company;
 import study.webboard.board.repository.CompanyRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 @Service
 public class CompanyService {
@@ -23,8 +20,8 @@ public class CompanyService {
         companyRepository.save(company);
     }
     //[채용공고 리스트 처리]
-    public List<Company> companyList() {
-        return companyRepository.findAll();
+    public Page<Company> companyList(Pageable pageable) {
+        return companyRepository.findAll(pageable);
     }
 
     //[채용공고 상세 정보]
@@ -35,9 +32,10 @@ public class CompanyService {
     public void companyDelete(Integer id) {
         companyRepository.deleteById(id);
     }
-//    //[게시물 검색]
-//    public Page<Company> companySearchList(String searchKeyword, Pageable pageable) {
-//        return companyRepository.findAllByContaining(searchKeyword, pageable);
-//    }
+    //[게시물 검색]
+    public Page<Company> companySearchList(String searchKeyword, Pageable pageable) {
+            return companyRepository.findByPositionContaining(searchKeyword, pageable);
+    }
+
 
 }

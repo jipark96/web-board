@@ -7,7 +7,7 @@
 <body>
 <div class="container" style="max-width: 600px">
     <div class="py-5 text-center">
-        <h2>상품 목록</h2>
+        <h2>채용공고</h2>
     </div>
     <div class="row">
         <div class="col">
@@ -39,6 +39,12 @@
             </tr>
             </tbody>
         </table>
+        <form th:action="@{/company/list}" method="get">
+            <input type="text" name="searchKeyword">
+            <button class="btn btn-primary float-end"
+                th:onclick="|location.href='@{/company/list}'|"
+                type="submit">검색</button>
+        </form>
     </div>
 </div> <!-- /container -->
 </body>

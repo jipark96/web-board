@@ -3,7 +3,7 @@ package study.webboard.board.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import study.webboard.board.Dto.CompanyDetailDto;
-import study.webboard.board.Dto.CompanyDto;
+import study.webboard.board.Dto.CompanyEditDto;
 import study.webboard.board.Dto.CompanyLoadDto;
 import study.webboard.board.service.CompanyService;
 
@@ -18,15 +18,15 @@ public class CompanyController {
 
     //[채용공고 등록]
     @PostMapping("/company/add")
-    public void addCompany(@RequestBody CompanyDto companyDto) {
-        companyService.saveCompany(companyDto);
+    public void addCompany(@RequestBody CompanyDetailDto companyDetailDto) {
+        companyService.saveCompany(companyDetailDto);
     }
 
    //[채용공고 수정]
     @PutMapping("/company/update")
-    public CompanyDto updateCompany(@RequestBody CompanyDto companyDto) {
-        companyService.updateCompany(companyDto);
-        return companyDto;
+    public CompanyEditDto updateCompany(@RequestBody CompanyEditDto companyEditDto) {
+        companyService.updateCompany(companyEditDto);
+        return companyEditDto;
     }
 
     //[채용공고 삭제]

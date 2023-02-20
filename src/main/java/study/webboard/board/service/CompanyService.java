@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.webboard.board.Dto.CompanyDetailDto;
-import study.webboard.board.Dto.CompanyDto;
+import study.webboard.board.Dto.CompanyEditDto;
 import study.webboard.board.Dto.CompanyLoadDto;
 import study.webboard.board.entity.Company;
 import study.webboard.board.repository.CompanyRepository;
@@ -20,18 +20,18 @@ public class CompanyService {
 
     //[채용공고 등록]
     @Transactional
-    public void saveCompany(CompanyDto companyDto) {
-        Company company = new Company(companyDto);
+    public void saveCompany(CompanyDetailDto companyDetailDto) {
+        Company company = new Company(companyDetailDto);
         companyRepository.save(company);
     }
 
     //[채용공고 수정]
     @Transactional
-    public Long updateCompany(CompanyDto companyDto) {
-        Company company = companyRepository.findById(companyDto.getId())
+    public Long updateCompany(CompanyEditDto companyEditDto) {
+        Company company = companyRepository.findById(companyEditDto.getComId())
                 .orElseThrow(()-> new IllegalArgumentException("id가 존재하지 않습니다."));
 
-        company.update(companyDto.getPosition(), companyDto.getCompensation(), companyDto.getContent(), companyDto.getStack());
+        company.update(companyEditDto.getComPosition(), companyEditDto.getComCompensation(), companyEditDto.getComContent(), companyEditDto.getComStack());
         companyRepository.save(company);
         return 1L;
     }
@@ -80,4 +80,5 @@ public class CompanyService {
                 .build();
         return companyDetailDto;
     }
+
 }

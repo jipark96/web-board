@@ -2,11 +2,9 @@ package study.webboard.board.entity;
 
 import lombok.*;
 import study.webboard.board.Dto.CompanyDetailDto;
-import study.webboard.board.Dto.CompanyDto;
+import study.webboard.board.Dto.CompanyEditDto;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @ToString
@@ -56,12 +54,12 @@ public class Company {
         this.stack = stack;
     }
 
-    public Company(CompanyDto companyDto) {
-        id = companyDto.getId();
-        position = companyDto.getPosition();
-        compensation = companyDto.getCompensation();
-        content = companyDto.getContent();
-        stack = companyDto.getStack();
+    public Company(CompanyEditDto companyEditDto) {
+        id = companyEditDto.getComId();
+        position = companyEditDto.getComPosition();
+        compensation = companyEditDto.getComCompensation();
+        content = companyEditDto.getComContent();
+        stack = companyEditDto.getComStack();
     }
 
     public Company(CompanyDetailDto companyDetailDto) {

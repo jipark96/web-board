@@ -62,7 +62,7 @@
 
 - [x] 채용 공고를 수정
     - API : ```/company/update```
-      ```
+         ```
       {
           "채용공고_id":채용공고_id,
           "채용포지션":"백엔드 주니어 개발자",
@@ -76,7 +76,7 @@
 
 - [x] 채용 공고 목록 조회
     - API : ```/company/list```
-      ```
+        ```
       [
         {
             "채용공고_id": 채용공고_id,
@@ -101,7 +101,7 @@
 
 - [x] 채용 상세 페이지 조회
     - API : ```/company/detail/{id}```
-  ```
+        ```
     {
         "채용공고_id": 채용공고_id,
         "회사명":"카카오",
@@ -115,8 +115,8 @@
     
 
 - [x] 채용 공고 검색
-       - API : ```/company/search?keyword=Python```
-     ```
+    - API : ```/company/search?keyword=Python```
+        ```
      [
        {
            "채용공고_id": 채용공고_id,

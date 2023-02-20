@@ -5,6 +5,8 @@ import study.webboard.board.Dto.CompanyDetailDto;
 import study.webboard.board.Dto.CompanyEditDto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @ToString
@@ -34,6 +36,7 @@ public class Company {
 
     @Column(name = "com_stack")
     public String stack;
+
 
     @Builder
     public Company(Long id, String name, String country, String area, String position, Long compensation, String content, String stack) {

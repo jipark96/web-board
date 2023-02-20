@@ -47,4 +47,10 @@ public class CompanyController {
         return companyService.companyDetail(id);
     }
 
+    //[채용공고 검색]
+    @GetMapping("/company/search")
+    public List<CompanyLoadDto> companySearch(@RequestParam(value="keyword") String keyword) {
+        return companyService.companySearch(keyword);
+
+    }
 }

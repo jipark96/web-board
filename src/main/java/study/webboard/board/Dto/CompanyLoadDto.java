@@ -40,4 +40,14 @@ public class CompanyLoadDto {
         comCompensation = company.getCompensation();
         comStack = company.getStack();
     }
+
+    public CompanyLoadDto(CompanyLoadDto companySearch) {
+        comId = companySearch.getComId();
+        comName = companySearch.getComName();
+        comCountry = companySearch.getComCountry();
+        comArea = companySearch.getComArea();
+        comPosition = companySearch.getComPosition();
+        comCompensation = companySearch.getComCompensation();
+        comStack = companySearch.getComStack();
+    }
 }

@@ -11,6 +11,7 @@ import study.webboard.board.repository.CompanyRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -29,7 +30,7 @@ public class CompanyService {
     @Transactional
     public Long updateCompany(CompanyEditDto companyEditDto) {
         Company company = companyRepository.findById(companyEditDto.getComId())
-                .orElseThrow(()-> new IllegalArgumentException("id가 존재하지 않습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("id가 존재하지 않습니다."));
 
         company.update(companyEditDto.getComPosition(), companyEditDto.getComCompensation(), companyEditDto.getComContent(), companyEditDto.getComStack());
         companyRepository.save(company);
@@ -38,7 +39,7 @@ public class CompanyService {
 
     //[채용공고 삭제]
     @Transactional
-    public Long deleteCompany(Long id){
+    public Long deleteCompany(Long id) {
         companyRepository.deleteById(id);
         return 1L;
     }
@@ -81,4 +82,10 @@ public class CompanyService {
         return companyDetailDto;
     }
 
+    @Transactional
+    public List<CompanyLoadDto> companySearch(String keyword) {
+        return companyRepository.findAllSearch(keyword).stream()
+                .map(CompanyLoadDto::new)
+                .collect(Collectors.toList());
+    }
 }

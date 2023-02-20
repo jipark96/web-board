@@ -85,7 +85,7 @@ public class CompanyService {
     @Transactional
     public List<CompanyLoadDto> companySearch(String keyword) {
         return companyRepository.findAllSearch(keyword).stream()
-                .map(CompanyLoadDto::new)
+                .map(company -> new CompanyLoadDto(company))
                 .collect(Collectors.toList());
     }
 }

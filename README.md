@@ -4,7 +4,6 @@
 
 ---
 ### 박지현
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jipark96&layout=compact"><br><br>
 > 채용 목록 등록, 수정, 삭제, 조회 검색 기능 구현
 
 ---
